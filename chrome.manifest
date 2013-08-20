@@ -2,3 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+component {c25d9aa0-0943-11e3-8ffd-0800200c9a66} components/Startup.js
+contract @clear-code.com/alwaysdefaultclient/startup;1 {c25d9aa0-0943-11e3-8ffd-0800200c9a66}
+category profile-after-change  AlwaysDefaultClientStartupService @clear-code.com/alwaysdefaultclient/startup;1
