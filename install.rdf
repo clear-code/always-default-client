@@ -8,7 +8,9 @@
                    em:version="1.0"
                    em:description="Makes the application to the default client on every startup."
                    em:creator="ClearCode Inc."
-                   em:homepageURL="http://www.clear-code.com/">
+                   em:homepageURL="http://www.clear-code.com/"
+                   em:bootstrap="true"
+                   em:type="2">
 
     <!--em:updateURL></em:updateURL-->
     <!--em:updateKey></em:updateKey-->
@@ -30,11 +32,17 @@
       </RDF:Description>
     </em:localized>
 
-	<em:targetApplication>
-      <!-- Thunderbird -->
-		<Description em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
-			em:minVersion="17.0"
-			em:maxVersion="17.*" />
-	</em:targetApplication>
+    <!-- Firefox -->
+    <em:targetApplication>
+      <RDF:Description em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                       em:minVersion="17.0"
+                       em:maxVersion="26.0a1" />
+    </em:targetApplication>
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <RDF:Description em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+                       em:minVersion="17.0"
+                       em:maxVersion="26.0a1" />
+    </em:targetApplication>
   </RDF:Description>
 </RDF:RDF>
