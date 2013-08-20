@@ -9,7 +9,7 @@ const kID   = '@clear-code.com/alwaysdefaultclient/startup;1';
 const kNAME = "Always Default Client Startup Service";
 
 const ObserverService = Cc['@mozilla.org/observer-service;1']
-    .getService(Ci.nsIObserverService);
+                          .getService(Ci.nsIObserverService);
 
 // const Application = Cc['@mozilla.org/steel/application;1']
 //     .getService(Ci.steelIApplication);
