@@ -15,6 +15,9 @@ const kNAME = "Always Default Client Startup Service";
 const ObserverService = Cc['@mozilla.org/observer-service;1']
                           .getService(Ci.nsIObserverService);
 
+const Prefs = Cc['@mozilla.org/preferences;1']
+                .getService(Ci.nsIPrefBranch);
+
 // const Application = Cc['@mozilla.org/steel/application;1']
 //     .getService(Ci.steelIApplication);
 
@@ -35,28 +38,57 @@ AlwaysDefaultClientStartupService.prototype = {
 
   ensureDefaultClient: function ADCSS_ensureDefaultClient() {
     var shellService;
-    var allUsers = false;
+    var allUsers = this.allUsers;
     try {
       // Firefox
       shellService = Cc['@mozilla.org/browser/shell-service;1']
                        .getService(Ci.nsIShellService);
-      let allTypes = false;
+      let allTypes = this.browser.allTypes;
       if (!shellService.isDefaultBrowser(/* startup? */ false, allTypes)) {
         shellService.setDefaultBrowser(allTypes, allUsers);
       }
     } catch(error) {
       // Thunderbird
       try {
-        let types = Ci.nsIShellService.MAIL;
-        // types |= Ci.nsIShellService.NEWS;
-        // types |= Ci.nsIShellService.RSS;
         shellService = Cc['@mozilla.org/mail/shell-service;1']
                          .getService(Ci.nsIShellService);
+        let types = this.mail.types;
         if (!shellService.isDefaultClient(/* startup? */ false, types)) {
           shellService.setDefaultClient(allUsers, types);
         }
       } catch(error) {
         dump('AlwaysDefaultClientStartupService: not supported application.\n');
+      }
+    }
+  },
+
+  get allUsers() {
+    try {
+      return Prefs.getBoolPref('extensions.alwaysdefaultclient@clear-code.com.allUsers');
+    } catch(error) {
+      return false;
+    }
+  },
+
+  browser: {
+    get allTypes() {
+      try {
+        return Prefs.getBoolPref('extensions.alwaysdefaultclient@clear-code.com.browser.allTypes');
+      } catch(error) {
+        return false;
+      }
+    }
+  },
+
+  mail: {
+    get types() {
+      try {
+        return Prefs.getIntPref('extensions.alwaysdefaultclient@clear-code.com.mail.types');
+      } catch(error) {
+        let types = Ci.nsIShellService.MAIL;
+        // types |= Ci.nsIShellService.NEWS;
+        // types |= Ci.nsIShellService.RSS;
+        return types;
       }
     }
   },
