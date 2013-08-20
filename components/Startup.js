@@ -30,6 +30,31 @@ AlwaysDefaultClientStartupService.prototype = {
   },
 
   ensureDefaultClient: function ADCSS_ensureDefaultClient() {
+    var shellService;
+    var allUsers = false;
+    try {
+      // Firefox
+      shellService = Cc['@mozilla.org/browser/shell-service;1']
+                       .getService(Ci.nsIShellService);
+      let allTypes = false;
+      if (!shellService.isDefaultBrowser(/* startup? */ false, allTypes)) {
+        shellService.setDefaultBrowser(allTypes, allUsers);
+      }
+    } catch(error) {
+      // Thunderbird
+      try {
+        let types = Ci.nsIShellService.MAIL;
+        // types |= Ci.nsIShellService.NEWS;
+        // types |= Ci.nsIShellService.RSS;
+        shellService = Cc['@mozilla.org/mail/shell-service;1']
+                         .getService(Ci.nsIShellService);
+        if (!shellService.isDefaultClient(/* startup? */ false, types)) {
+          shellService.setDefaultClient(allUsers, types);
+        }
+      } catch(error) {
+        dump('AlwaysDefaultClientStartupService: not supported application.\n');
+      }
+    }
   },
 
   classID: kCID,
