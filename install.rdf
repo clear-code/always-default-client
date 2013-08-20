@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="alwaysdefaultclient@clear-code.com"
+                   em:name="Always Default Client"
+                   em:version="1.0"
+                   em:description="Makes the application to the default client on every startup."
+                   em:creator="ClearCode Inc."
+                   em:homepageURL="http://www.clear-code.com/">
+
+    <!--em:updateURL></em:updateURL-->
+    <!--em:updateKey></em:updateKey-->
+
+    <em:localized>
+      <RDF:Description em:locale="en-US"
+                       em:name="Always Default Client"
+                       em:description="Makes the application to the default client on every startup."
+                       em:homepageURL="http://www.clear-code.com/"
+                       em:creator="ClearCode Inc.">
+      </RDF:Description>
+    </em:localized>
+    <em:localized>
+      <RDF:Description em:locale="ja"
+                       em:name="Always Default Client"
+                       em:description="毎回起動時にアプリケーションをシステムの既定のクライアントに設定します。"
+                       em:homepageURL="http://www.clear-code.com/"
+                       em:creator="ClearCode Inc.">
+      </RDF:Description>
+    </em:localized>
+
+	<em:targetApplication>
+      <!-- Thunderbird -->
+		<Description em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+			em:minVersion="17.0"
+			em:maxVersion="17.*" />
+	</em:targetApplication>
+  </RDF:Description>
+</RDF:RDF>
