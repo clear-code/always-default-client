@@ -18,3 +18,4 @@ You can control the behavior by following preferences:
     // (1 + 2 + 4 = 7 = All)
     user_pref("extensions.alwaysdefaultclient@clear-code.com.mail.types", 1);
 
+This is mainly designed for corporate-use.
