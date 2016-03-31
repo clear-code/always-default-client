@@ -1,6 +1,8 @@
 always-default-client
 =====================
 
+Download link: https://addons.mozilla.org/thunderbird/addon/always-default-client/
+
 Makes Firefox/Thunderbird as the default client on every startup.
 
 You can control the behavior by following preferences:
