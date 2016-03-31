@@ -1,6 +1,8 @@
 always-default-client
 =====================
 
+ダウンロードリンク：https://addons.mozilla.org/thunderbird/addon/always-default-client/
+
 Firefox/Thunderbirdを起動する度に自動的に既定のクライアントに設定します。
 
 この挙動は以下の設定で変更できます。
